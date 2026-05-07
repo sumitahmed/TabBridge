@@ -83,7 +83,7 @@ No accounts. No cloud. No backend. Just a JSON file.
 
 ### Chrome Web Store
 
-> Coming soon.
+> Coming soon (me is broke).
 
 ---
 
