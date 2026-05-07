@@ -1,0 +1,18 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Packages (we have none, but just in case)
+node_modules/
+package-lock.json
+
+# Build artifacts
+*.zip
+dist/

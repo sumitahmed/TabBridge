@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TabBridge</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════ HEADER ═══════════════════ -->
+  <header class="header">
+    <div class="logo-row">
+      <div class="logo-icon">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <rect x="1" y="1" width="8" height="8" rx="2" fill="#4ade80"/>
+          <rect x="11" y="1" width="8" height="8" rx="2" fill="#4ade80" opacity="0.55"/>
+          <rect x="1" y="11" width="8" height="8" rx="2" fill="#4ade80" opacity="0.55"/>
+          <rect x="11" y="11" width="8" height="8" rx="2" fill="#4ade80"/>
+        </svg>
+      </div>
+      <div>
+        <h1 class="logo-title">TabBridge</h1>
+        <p class="logo-sub">Transfer tab groups across browsers</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══════════════════ TABS NAV ═══════════════════ -->
+  <nav class="tab-nav">
+    <button class="tab-btn active" data-tab="export">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v8M4 6l4-4 4 4M3 12h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Export
+    </button>
+    <button class="tab-btn" data-tab="import">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 10V2M4 6l4 4 4-4M3 12h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Import
+    </button>
+  </nav>
+
+  <!-- ═══════════════════ EXPORT PANEL ═══════════════════ -->
+  <section id="panel-export" class="panel active">
+    <p class="panel-desc">Capture all your open tab groups and save them as a portable JSON file.</p>
+
+    <button id="btn-export" class="btn btn-primary">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 10v3a1 1 0 001 1h10a1 1 0 001-1v-3M8 2v8M5 7l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Export Tab Groups
+    </button>
+
+    <!-- Preview area (hidden until export runs) -->
+    <div id="export-preview" class="preview-card hidden">
+      <div class="preview-header">
+        <span class="preview-label">Preview</span>
+        <span id="export-count" class="badge"></span>
+      </div>
+      <pre id="export-json" class="json-box"></pre>
+      <div class="btn-row">
+        <button id="btn-download" class="btn btn-secondary">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 10v3a1 1 0 001 1h10a1 1 0 001-1v-3M8 2v8M5 7l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Download JSON
+        </button>
+        <button id="btn-copy" class="btn btn-secondary">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="5" y="5" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M3 11V3.5A1.5 1.5 0 014.5 2H11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Copy JSON
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ IMPORT PANEL ═══════════════════ -->
+  <section id="panel-import" class="panel">
+    <p class="panel-desc">Paste a TabBridge JSON export to recreate your tab groups in this browser.</p>
+
+    <textarea id="import-json" class="import-area" placeholder='Paste your TabBridge JSON here...' spellcheck="false"></textarea>
+
+    <button id="btn-import" class="btn btn-primary">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 10V2M4 6l4 4 4-4M3 12h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Import Tab Groups
+    </button>
+
+    <!-- Import file option -->
+    <div class="file-import-row">
+      <span class="or-divider">— or —</span>
+      <label class="btn btn-ghost" for="file-input">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M14 10v3a1 1 0 01-1 1H3a1 1 0 01-1-1v-3M5 5l3-3 3 3M8 2v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Load from file
+      </label>
+      <input type="file" id="file-input" accept=".json" class="sr-only" />
+    </div>
+  </section>
+
+  <!-- ═══════════════════ TOAST ═══════════════════ -->
+  <div id="toast" class="toast"></div>
+
+  <!-- ═══════════════════ LOADING OVERLAY ═══════════════════ -->
+  <div id="loading" class="loading-overlay hidden">
+    <div class="spinner"></div>
+    <span class="loading-text">Working…</span>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

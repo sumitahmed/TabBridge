@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "TabBridge",
+  "version": "1.0.0",
+  "description": "Export and import browser tab groups across Chromium browsers like Chrome, Brave, and Edge.",
+  "permissions": [
+    "tabs",
+    "tabGroups",
+    "storage",
+    "downloads"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
